@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management</title>
+    <style>
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+            line-height: 1.6;
+            overflow: hidden;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #007acc;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #005f99;
+            border-radius: 5px;
+        }
+
+        /* Main Section */
+        .add-books {
+            max-width: 1000px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            top: 100px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Add Books Section */
+        .add-books form {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Book Image Section */
+        .book-image-wrapper {
+            width: fit-content;
+            max-width: 300px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .book-image {
+            width: 120px;
+            height: 150px;
+            background-color: #e0f7fa;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: #007acc;
+            overflow: hidden;
+            border: 2px dashed #007acc;
+            cursor: pointer;
+        }
+
+        .book-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        section {
+            height: 100vh;
+            background-color: #ddd;
+            align-content: center;
+            justify-items: center;
+            padding-top: 100px;
+        }
+
+        /* Form Fields Section */
+        .form-fields {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 200px;
+            justify-content: center;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group input,
+        .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Full Width Fields for Summary and Availability */
+        .full-width {
+            width: 100%;
+            display: flex;
+        }
+
+        /* Submit Button */
+        .form-group button {
+            background-color: #007acc;
+            color: white;
+            font-size: 16px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #005f99;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .add-books form {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .book-image-wrapper,
+            .form-fields {
+                width: 100%;
+            }
+
+            .form-group label {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#genre">Genre</a></li>
+                <li><a href="#books">Books</a></li>
+                <li><a href="#add-books">Add Book</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="home" id="home">
+            
+        </section>
+        <section class="genre" id="genre">
+
+        </section>
+        <section class="books" id="books">
+
+        </section>
+        <section>
+            <div class="add-books" id="add-books">
+                <h2>Add a New Book</h2>
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <!-- Book Image Section -->
+                    <div class="book-image-wrapper">
+                        <label for="book-image">Book Cover</label>
+                        <div class="book-image" id="image-preview" onclick="document.getElementById('book-image-input').click()">
+                            <span>Click to upload image</span>
+                        </div>
+                        <input type="file" id="book-image-input" name="book-image" accept="image/*" style="display:none;" onchange="previewImage(event)">
+                    </div>
+    
+                    <!-- Form Fields Section -->
+                    <div class="form-fields">
+                        <!-- Title -->
+                        <div class="form-group">
+                            <label for="book-title">Title:</label>
+                            <input type="text" id="book-title" name="book-title" placeholder="Enter book title">
+                        </div>
+    
+                        <!-- Author -->
+                        <div class="form-group">
+                            <label for="book-author">Author:</label>
+                            <input type="text" id="book-author" name="book-author" placeholder="Enter author's name">
+                        </div>
+    
+                        <div style="display: flex; gap: 30px;">
+                            <!-- Genre Dropdown -->
+                            <div class="form-group" style="width: 50%;">
+                                <label for="book-genre">Genre:</label>
+                                <select id="book-genre" name="book-genre">
+                                    <option value="">Select Genre</option>
+                                    <option value="fiction">Fiction</option>
+                                    <option value="non-fiction">Non-Fiction</option>
+                                    <option value="mystery">Mystery</option>
+                                    <option value="fantasy">Fantasy</option>
+                                    <option value="science-fiction">Science Fiction</option>
+                                    <option value="biography">Biography</option>
+                                    <option value="history">History</option>
+                                    <option value="romance">Romance</option>
+                                    <option value="thriller">Thriller</option>
+                                </select>
+                            </div>
+                            <!-- Availability -->
+                            <div class="form-group full-width" style="width: 50%;">
+                                <label for="book-availability">Availability:</label>
+                                <input type="number" id="book-availability" name="book-availability" placeholder="Available copies">
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Summary -->
+                    <div class="form-group full-width">
+                        <label for="book-summary">Summary:</label>
+                        <textarea id="book-summary" name="book-summary" rows="4" placeholder="Enter a brief summary"></textarea>
+                    </div>
+    
+                    <!-- Submit Button -->
+                    <div class="form-group" style="text-align: center;">
+                        <button type="submit">Add Book</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        
+        <section class="community" id="community">
+
+        </section>
+    </main>
+
+    <script>
+        // JavaScript to preview the uploaded image
+        function previewImage(event) {
+            const preview = document.getElementById('image-preview');
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.innerHTML = `<img src="${e.target.result}" alt="Book Cover">`;
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                preview.innerHTML = '<span>Click to upload image</span>';
+            }
+        }
+    </script>
+</body>
+</html>
